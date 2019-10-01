@@ -13,6 +13,7 @@ import javax.ws.rs.core.Response;
 
 import mockserver.httpmockserver.reqresmodels.BMRSAccountReservationRequest;
 import mockserver.httpmockserver.reqresmodels.BMRSAccountReservationResponse;
+import mockserver.httpmockserver.reqresmodels.BMRSLinkingISCardCardContractResponse;
 import mockserver.httpmockserver.reqresmodels.Error;
 import ua.aval.integration.microservices.http.model.ResponseFormatOnRegisteringPostRequest;
 
@@ -46,4 +47,25 @@ public class BmrsOperationRequestsMocks {
                 "UA853996220000000260012335661",
                 new Error());
     }
+	
+	@Path("link-is-card/success")
+	@POST
+	public Response processLinkingPostRequestSuccessfully(BMRSAccountReservationRequest data) {
+		return Response.ok(new ResponseFormatOnRegisteringPostRequest("linkingCorellationId")).build();
+	}
+	
+	@Path("link-is-card/success/linkingCorellationId")
+	@GET
+	public Response processLinkingGetFetchRequestSuccess() {
+		return Response.ok(this.getBmrsToIsCardAccLinkerResponseSample()).build();
+	}
+	
+	private BMRSLinkingISCardCardContractResponse getBmrsToIsCardAccLinkerResponseSample() {
+		return new BMRSLinkingISCardCardContractResponse("CBPM",
+														 "1010",
+														 "1234567890",
+														 "0987654321",
+														 new Error());
+	}
+	
 }
