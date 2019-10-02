@@ -5,21 +5,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
+import javax.json.bind.annotation.JsonbProperty;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ISCardRegisterClientResponse implements Serializable {
 
+    
     @JsonProperty("IO_ContractID")
     private String contractID;
+    
     @JsonProperty("IO_AccountID")
     private String accountID;
+    
     @JsonProperty("IO_ClientPrivID")
     private String clientPrivID;
+    
     @JsonProperty("O_CardID")
     private String cardID;
+    
     @JsonProperty("o_cardnum")
     private String cardNumber;
+    
     @JsonProperty("O_ErrClassID")
     private String errClassID;
+    
     @JsonProperty("O_ErrDescription")
     private String errDescription;
 

@@ -6,53 +6,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
-import javax.json.bind.annotation.JsonbProperty;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BMRSLinkingISCardCardContractRequest implements Serializable {
 
-	@NotNull(message = "The procCode of source system cannot be null.")
-	@NotEmpty(message = "The procCode of source system cannot be empty.")
-	@JsonbProperty("procCode")
 	@JsonProperty("procCode")
 	private String systemCode;
-	
-	@NotNull(message = "The processInstanceId param in request cannot be null.")
-	@NotEmpty(message = "The processInstanceId param in request cannot be empty.")
-	@JsonbProperty("procId")
 	@JsonProperty("procId")
     private String processInstanceId;
-	
-	@NotNull(message = "The user IUAD code param in request cannot be null.")
-	@Pattern(regexp = "^IUAD\\p{Alnum}{4}$", message = "Invalid user IAUD code format found in request param.")
-	@JsonbProperty("user")
 	@JsonProperty("user")
     private String userIuadCode;
-	
-	@NotNull(message = "branchCode reqeust param cannot be null")
-	@Size(min = 4, max = 4, message = "bracnhCode request param has to be exactly 4 chars in length.")
-	@JsonbProperty("branchCode")
 	@JsonProperty("branchCode")
     private String branchCode;
-	
-	@NotNull(message = "accountNumber reqeust param cannot be null")
-	@NotEmpty(message = "accountNumber reqeust param cannot be empty")
-	@JsonbProperty("accountNumber")
 	@JsonProperty("accountNumber")
     private String accountNumber;
-	
-	@NotNull(message = "accountNumber reqeust param cannot be null")
-	@NotEmpty(message = "accountNumber reqeust param cannot be empty")
-	@JsonbProperty("contractId")
 	@JsonProperty("contractId")
     private String isCardContractId;
-	
-	@JsonbProperty("jwt")
 	@JsonProperty("jwt")
     private String jwt;
 

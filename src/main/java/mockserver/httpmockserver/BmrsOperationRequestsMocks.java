@@ -11,8 +11,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import mockserver.httpmockserver.reqresmodels.BMRSAccountOpeningRequest;
+import mockserver.httpmockserver.reqresmodels.BMRSAccountOpeningResponse;
 import mockserver.httpmockserver.reqresmodels.BMRSAccountReservationRequest;
 import mockserver.httpmockserver.reqresmodels.BMRSAccountReservationResponse;
+import mockserver.httpmockserver.reqresmodels.BMRSLinkingISCardCardContractRequest;
 import mockserver.httpmockserver.reqresmodels.BMRSLinkingISCardCardContractResponse;
 import mockserver.httpmockserver.reqresmodels.Error;
 import ua.aval.integration.microservices.http.model.ResponseFormatOnRegisteringPostRequest;
@@ -50,7 +53,7 @@ public class BmrsOperationRequestsMocks {
 	
 	@Path("link-is-card/success")
 	@POST
-	public Response processLinkingPostRequestSuccessfully(BMRSAccountReservationRequest data) {
+	public Response processLinkingPostRequestSuccessfully(BMRSLinkingISCardCardContractRequest data) {
 		return Response.ok(new ResponseFormatOnRegisteringPostRequest("linkingCorellationId")).build();
 	}
 	
@@ -66,6 +69,34 @@ public class BmrsOperationRequestsMocks {
 														 "1234567890",
 														 "0987654321",
 														 new Error());
+	}
+	
+	@Path("open/success")
+	@POST
+	public Response processOpeningPostRequestSuccessfully(BMRSAccountOpeningRequest data) {
+		return Response.ok(new ResponseFormatOnRegisteringPostRequest("openCorellationId")).build();
+	}
+	
+	@Path("open/success/openCorellationId")
+	@GET
+	public Response processOpeningGetFetchRequestSuccess() {
+		return Response.ok(this.getBmrsAccountOpenResponseSample()).build();
+	}
+	
+	private BMRSAccountOpeningResponse getBmrsAccountOpenResponseSample() {
+		return new BMRSAccountOpeningResponse.Builder()
+							.systemCode("CBPM")
+							.processInstanceId("processInstanceTestId")
+							.bmrsCustomerId("bmrsCustomerTestId")
+							.accountBranchCode("9999")
+							.accountNumber("1234567890")
+							.ibanAccountNumber("UA853996220000000260012335661")
+							.accountCurrency("USD")
+							.bmrsAccountType("bmrsAccountTestType")
+							.bmrsAccountRole("bmrsAccountTestRole")
+							.accountOpenDate("19920907")
+							.error(new Error())
+							.build();
 	}
 	
 }

@@ -1,69 +1,102 @@
 package mockserver.httpmockserver.reqresmodels;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
+import javax.json.bind.annotation.JsonbProperty;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ISCardRegisterClientRequest implements Serializable {
 
+    
     @JsonProperty("I_ComandID")
     private String comandID;
+    
     @JsonProperty("I_Surname")
     private String surname;
+    
     @JsonProperty("I_Name")
     private String name;
+    
     @JsonProperty("I_Fname")
     private String fName;
+    
     @JsonProperty("I_BirthDate")
     private String birthDate;
+    
     @JsonProperty("I_IdentCode")
     private String identCode;
+    
     @JsonProperty("I_Hstreet")
     private String hStreet;
+    
     @JsonProperty("I_HcityID")
     private String hCityID;
+    
     @JsonProperty("I_HregionID")
     private String hRegionID;
+    
     @JsonProperty("I_HcountryID")
     private String hCountryID;
+    
     @JsonProperty("I_HzipCode")
     private String hZipCode;
+    
     @JsonProperty("I_ResidentID")
     private String residentID;
+    
     @JsonProperty("I_InfluenceID")
     private String influenceID;
+    
     @JsonProperty("I_Enrolled")
     private String enrolled;
+    
     @JsonProperty("I_BranchID")
     private String branchID;
+    
     @JsonProperty("I_EmailAddress")
     private String emailAddress;
+    
     @JsonProperty("I_BaseCardName")
     private String baseCardName;
+    
     @JsonProperty("I_BaseMcName")
     private String baseMcName;
+    
     @JsonProperty("I_MainAccCcy")
     private String mainAccCcy;
+    
     @JsonProperty("I_Pserie")
     private String pSerie;
+    
     @JsonProperty("I_Pnumber")
     private String pNumber;
+    
     @JsonProperty("I_Pissued")
     private String pIssued;
+    
     @JsonProperty("I_Pissuer")
     private String pIssuer;
+    
     @JsonProperty("I_HdistrictID")
     private String hDistrictID;
+    
     @JsonProperty("I_Sex")
     private String sex;
+    
     @JsonProperty("I_AgrPartPlID")
     private String agrPartPlID;
+    
     @JsonProperty("I_ChannelID")
     private String channelID;
+    
     @JsonProperty("I_Reserved1")
     private String reserved1;
+    
     @JsonProperty("I_Reserved2")
     private String reserved2;
 
