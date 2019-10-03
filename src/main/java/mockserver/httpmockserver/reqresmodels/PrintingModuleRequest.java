@@ -1,70 +1,164 @@
 package mockserver.httpmockserver.reqresmodels;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
+import javax.json.bind.annotation.JsonbProperty;
 import javax.validation.constraints.NotNull;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PrintingModuleRequest implements Serializable {
 
+    @JsonProperty("ParamsFormat")
+    @JsonbProperty("ParamsFormat")
     @NotNull(message = "ParamsFormat field in PrintingModuleRequest object connot be null.")
     private String ParamsFormat;
+
+    @JsonProperty("TemplateCode")
+    @JsonbProperty("TemplateCode")
     @NotNull(message = "TemplateCode field in PrintingModuleRequest object connot be null.")
     private String TemplateCode;
+
+    @JsonProperty("Output")
+    @JsonbProperty("Output")
     @NotNull(message = "Output field in PrintingModuleRequest object connot be null.")
     private String Output;
+
+    @JsonProperty("OPERATION")
+    @JsonbProperty("OPERATION")
     @NotNull(message = "OPERATION field in PrintingModuleRequest object connot be null.")
     private String OPERATION;
+
+    @JsonProperty("customerCmdID")
+    @JsonbProperty("customerCmdID")
     @NotNull(message = "customerCmdID field in PrintingModuleRequest object connot be null.")
     private String customerCmdID;
+
+    @JsonProperty("productID")
+    @JsonbProperty("productID")
     @NotNull(message = "productID field in PrintingModuleRequest object connot be null.")
     private String productID;
+
+    @JsonProperty("typeId")
+    @JsonbProperty("typeId")
     @NotNull(message = "typeId field in PrintingModuleRequest object connot be null.")
     private String typeId;
+
+    @JsonProperty("name")
+    @JsonbProperty("name")
     @NotNull(message = "name field in PrintingModuleRequest object connot be null.")
     private String name;
+
+    @JsonProperty("surname")
+    @JsonbProperty("surname")
     @NotNull(message = "surname field in PrintingModuleRequest object connot be null.")
     private String surname;
+
+    @JsonProperty("secondname")
+    @JsonbProperty("secondname")
     @NotNull(message = "secondname field in PrintingModuleRequest object connot be null.")
     private String secondname;
+
+    @JsonProperty("cardHolder")
+    @JsonbProperty("cardHolder")
     @NotNull(message = "cardHolder field in PrintingModuleRequest object connot be null.")
     private String cardHolder;
+
+    @JsonProperty("taxcode")
+    @JsonbProperty("taxcode")
     @NotNull(message = "taxcode field in PrintingModuleRequest object connot be null.")
     private String taxcode;
+
+    @JsonProperty("birthDate")
+    @JsonbProperty("birthDate")
     @NotNull(message = "birthDate field in PrintingModuleRequest object connot be null.")
     private String birthDate;
+
+    @JsonProperty("docSer")
+    @JsonbProperty("docSer")
     @NotNull(message = "docSer field in PrintingModuleRequest object connot be null.")
     private String docSer;
+
+    @JsonProperty("docNum")
+    @JsonbProperty("docNum")
     @NotNull(message = "docNum field in PrintingModuleRequest object connot be null.")
     private String docNum;
+
+    @JsonProperty("publicAgreementNumber")
+    @JsonbProperty("publicAgreementNumber")
     @NotNull(message = "publicAgreementNumber field in PrintingModuleRequest object connot be null.")
     private String publicAgreementNumber;
+
+    @JsonProperty("publicAgreementDate")
+    @JsonbProperty("publicAgreementDate")
     @NotNull(message = "publicAgreementDate field in PrintingModuleRequest object connot be null.")
     private String publicAgreementDate;
 
+    @JsonProperty("info_MOB_IB")
+    @JsonbProperty("info_MOB_IB")
     private String info_MOB_IB;
+
+    @JsonProperty("info_WORK")
+    @JsonbProperty("info_WORK")
     private String info_WORK;
+
+    @JsonProperty("info_TEL")
+    @JsonbProperty("info_TEL")
     private String info_TEL;
+
+    @JsonProperty("info_MOB_MB")
+    @JsonbProperty("info_MOB_MB")
     private String info_MOB_MB;
+
+    @JsonProperty("info_MOB")
+    @JsonbProperty("info_MOB")
     private String info_MOB;
+
+    @JsonProperty("email")
+    @JsonbProperty("email")
     private String email;
 
+    @JsonProperty("category")
+    @JsonbProperty("category")
     @NotNull(message = "category field in PrintingModuleRequest object connot be null.")
     private String category;
+
+    @JsonProperty("cardName")
+    @JsonbProperty("cardName")
     @NotNull(message = "nameCard field in PrintingModuleRequest object connot be null.")
     private String cardName;
+
+    @JsonProperty("productName")
+    @JsonbProperty("productName")
     @NotNull(message = "productName field in PrintingModuleRequest object connot be null.")
     private String productName;
+
+    @JsonProperty("currency")
+    @JsonbProperty("currency")
     @NotNull(message = "currency field in PrintingModuleRequest object connot be null.")
     private String currency;
+
+    @JsonProperty("selectedProductId")
+    @JsonbProperty("selectedProductId")
     @NotNull(message = "selectedProductId field in PrintingModuleRequest object connot be null.")
     private String selectedProductId;
+
+    @JsonProperty("keyWord")
+    @JsonbProperty("keyWord")
     @NotNull(message = "keyWord field in PrintingModuleRequest object connot be null.")
     private String keyWord;
+
+    @JsonProperty("IBAN")
+    @JsonbProperty("IBAN")
     @NotNull(message = "IBAN field in PrintingModuleRequest object connot be null.")
     private String IBAN;
+
+    @JsonProperty("Dateopenacc")
+    @JsonbProperty("Dateopenacc")
     @NotNull(message = "Dateopenacc field in PrintingModuleRequest object connot be null.")
     private String Dateopenacc;
 
