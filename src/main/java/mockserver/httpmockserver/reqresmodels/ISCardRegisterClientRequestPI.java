@@ -10,97 +10,126 @@ import javax.json.bind.annotation.JsonbProperty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ISCardRegisterClientRequest implements Serializable {
+public class ISCardRegisterClientRequestPI implements Serializable {
 
     
     @JsonProperty("I_ComandID")
+    @JsonbProperty("I_ComandID")
     private String comandID;
     
     @JsonProperty("I_Surname")
+    @JsonbProperty("I_Surname")
     private String surname;
     
     @JsonProperty("I_Name")
+    @JsonbProperty("I_Name")
     private String name;
     
     @JsonProperty("I_Fname")
+    @JsonbProperty("I_Fname")
     private String fName;
     
     @JsonProperty("I_BirthDate")
+    @JsonbProperty("I_BirthDate")
     private String birthDate;
     
     @JsonProperty("I_IdentCode")
+    @JsonbProperty("I_IdentCode")
     private String identCode;
     
     @JsonProperty("I_Hstreet")
+    @JsonbProperty("I_Hstreet")
     private String hStreet;
     
     @JsonProperty("I_HcityID")
+    @JsonbProperty("I_HcityID")
     private String hCityID;
     
     @JsonProperty("I_HregionID")
+    @JsonbProperty("I_HregionID")
     private String hRegionID;
     
     @JsonProperty("I_HcountryID")
+    @JsonbProperty("I_HcountryID")
     private String hCountryID;
     
     @JsonProperty("I_HzipCode")
+    @JsonbProperty("I_HzipCode")
     private String hZipCode;
     
     @JsonProperty("I_ResidentID")
+    @JsonbProperty("I_ResidentID")
     private String residentID;
     
     @JsonProperty("I_InfluenceID")
+    @JsonbProperty("I_InfluenceID")
     private String influenceID;
     
     @JsonProperty("I_Enrolled")
+    @JsonbProperty("I_Enrolled")
     private String enrolled;
     
     @JsonProperty("I_BranchID")
+    @JsonbProperty("I_BranchID")
     private String branchID;
     
     @JsonProperty("I_EmailAddress")
+    @JsonbProperty("I_EmailAddress")
     private String emailAddress;
     
     @JsonProperty("I_BaseCardName")
+    @JsonbProperty("I_BaseCardName")
     private String baseCardName;
     
     @JsonProperty("I_BaseMcName")
+    @JsonbProperty("I_BaseMcName")
     private String baseMcName;
     
     @JsonProperty("I_MainAccCcy")
+    @JsonbProperty("I_MainAccCcy")
     private String mainAccCcy;
     
     @JsonProperty("I_Pserie")
+    @JsonbProperty("I_Pserie")
     private String pSerie;
     
     @JsonProperty("I_Pnumber")
+    @JsonbProperty("I_Pnumber")
     private String pNumber;
     
     @JsonProperty("I_Pissued")
+    @JsonbProperty("I_Pissued")
     private String pIssued;
     
     @JsonProperty("I_Pissuer")
+    @JsonbProperty("I_Pissuer")
     private String pIssuer;
     
     @JsonProperty("I_HdistrictID")
+    @JsonbProperty("I_HdistrictID")
     private String hDistrictID;
     
     @JsonProperty("I_Sex")
+    @JsonbProperty("I_Sex")
     private String sex;
     
     @JsonProperty("I_AgrPartPlID")
+    @JsonbProperty("I_AgrPartPlID")
     private String agrPartPlID;
     
     @JsonProperty("I_ChannelID")
+    @JsonbProperty("I_ChannelID")
     private String channelID;
     
     @JsonProperty("I_Reserved1")
+    @JsonbProperty("I_Reserved1")
     private String reserved1;
     
     @JsonProperty("I_Reserved2")
+    @JsonbProperty("I_Reserved2")
     private String reserved2;
 
-    public ISCardRegisterClientRequest() {
+    public ISCardRegisterClientRequestPI() {
     }
 
     public String getComandID() {

@@ -11,7 +11,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import mockserver.httpmockserver.reqresmodels.ISCardRegisterClientRequest;
+import mockserver.httpmockserver.reqresmodels.ISCardRegisterClientRequestPE;
+import mockserver.httpmockserver.reqresmodels.ISCardRegisterClientRequestPI;
 import mockserver.httpmockserver.reqresmodels.ISCardRegisterClientResponse;
 import ua.aval.integration.microservices.http.model.ResponseFormatOnRegisteringPostRequest;
 
@@ -25,21 +26,36 @@ import ua.aval.integration.microservices.http.model.ResponseFormatOnRegisteringP
 @Produces(MediaType.APPLICATION_JSON)
 public class ISCardRegistrationRequestsMocks {
 	
-	@Path("create")
+	@Path("pi/create")
 	@POST
-	public Response processPostRequestSuccessfully(ISCardRegisterClientRequest data) {
+	public Response processPostRequestSuccessfully(ISCardRegisterClientRequestPI data) {
+		return Response.ok(new ResponseFormatOnRegisteringPostRequest("isCardCreateCorellationId")).build();
+	}
+
+	@Path("pe/create")
+	@POST
+	public Response processPostRequestSuccessfully(ISCardRegisterClientRequestPE data) {
 		return Response.ok(new ResponseFormatOnRegisteringPostRequest("isCardCreateCorellationId")).build();
 	}
 	
-	@Path("create/isCardCreateCorellationId")
+	@Path("pi/create/isCardCreateCorellationId")
 	@GET
-	public Response processGetFetchRequestSuccess() {
-		return Response.ok(this.getPrintingModuleResponseSample()).build();
+	public Response processGetFetchRequestSuccessPI() {
+		return Response.ok(this.getISCardResponseSamplePI()).build();
 	}
 	
-	private ISCardRegisterClientResponse getPrintingModuleResponseSample() {
-		return new ISCardRegisterClientResponse("isCardContractId", "isCardAccId", "isCardClientPrivId", "icCardCardId", "1111222233334444", "", "");
+	@Path("pe/create/isCardCreateCorellationId")
+	@GET
+	public Response processGetFetchRequestSuccessPE() {
+		return Response.ok(this.getISCardResponseSamplePE()).build();
 	}
-	
+
+	private ISCardRegisterClientResponse getISCardResponseSamplePI() {
+		return new ISCardRegisterClientResponse("isCardContractId", "isCardAccId", "isCardClientPrivId", null, "icCardCardId", "1111222233334444", "", "");
+	}
+
+	private ISCardRegisterClientResponse getISCardResponseSamplePE() {
+		return new ISCardRegisterClientResponse("isCardContractId", "isCardAccId", null, "isCardClientCorpId", "icCardCardId", "1111222233334444", "", "");
+	}
 	
 }
