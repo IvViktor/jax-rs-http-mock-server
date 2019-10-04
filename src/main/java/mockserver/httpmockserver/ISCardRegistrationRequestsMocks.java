@@ -11,9 +11,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import mockserver.httpmockserver.reqresmodels.ISCardRegisterClientRequestPE;
-import mockserver.httpmockserver.reqresmodels.ISCardRegisterClientRequestPI;
-import mockserver.httpmockserver.reqresmodels.ISCardRegisterClientResponse;
+import mockserver.httpmockserver.reqresmodels.*;
+import mockserver.httpmockserver.reqresmodels.Error;
 import ua.aval.integration.microservices.http.model.ResponseFormatOnRegisteringPostRequest;
 
 /**
@@ -37,17 +36,29 @@ public class ISCardRegistrationRequestsMocks {
 	public Response processPostRequestSuccessfully(ISCardRegisterClientRequestPE data) {
 		return Response.ok(new ResponseFormatOnRegisteringPostRequest("isCardCreateCorellationId")).build();
 	}
+
+	@Path("link-is-card")
+	@POST
+	public Response processPostRequestSuccessfullyForAccIdToCMDLinking(ISCardClientIDToCMDLinkerRequest data) {
+		return Response.ok(new ResponseFormatOnRegisteringPostRequest("isCardCreateCorellationId")).build();
+	}
 	
 	@Path("pi/create/isCardCreateCorellationId")
 	@GET
 	public Response processGetFetchRequestSuccessPI() {
 		return Response.ok(this.getISCardResponseSamplePI()).build();
 	}
-	
+
 	@Path("pe/create/isCardCreateCorellationId")
 	@GET
 	public Response processGetFetchRequestSuccessPE() {
 		return Response.ok(this.getISCardResponseSamplePE()).build();
+	}
+
+	@Path("link-is-card/isCardCreateCorellationId")
+	@GET
+	public Response processGetFetchRequestSuccessForAccIdToCMDLinking() {
+		return Response.ok(this.getISCardResponseSampleForAccIdToCMDLinking()).build();
 	}
 
 	private ISCardRegisterClientResponse getISCardResponseSamplePI() {
@@ -57,5 +68,8 @@ public class ISCardRegistrationRequestsMocks {
 	private ISCardRegisterClientResponse getISCardResponseSamplePE() {
 		return new ISCardRegisterClientResponse("isCardContractId", "isCardAccId", null, "isCardClientCorpId", "icCardCardId", "1111222233334444", "", "");
 	}
-	
+
+	private ISCardClientIDToCMDLinkerResponse getISCardResponseSampleForAccIdToCMDLinking() {
+		return new ISCardClientIDToCMDLinkerResponse("isCardCMDProcCode", "isCardCMDprocId",new Error());
+	}
 }
