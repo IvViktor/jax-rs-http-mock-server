@@ -10,7 +10,12 @@ public class Error implements Serializable {
     public Error() {
     }
 
-    public String getErrCode() {
+    public Error(String errCode, String errMes) {
+		this.errCode = errCode;
+		this.errMes = errMes;
+	}
+
+	public String getErrCode() {
         return errCode;
     }
 

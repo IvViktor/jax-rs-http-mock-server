@@ -18,6 +18,7 @@ import mockserver.httpmockserver.reqresmodels.BMRSAccountReservationResponse;
 import mockserver.httpmockserver.reqresmodels.BMRSLinkingISCardCardContractRequest;
 import mockserver.httpmockserver.reqresmodels.BMRSLinkingISCardCardContractResponse;
 import mockserver.httpmockserver.reqresmodels.Error;
+import ua.aval.integration.microservices.http.model.FetchRequestBodyModel;
 import ua.aval.integration.microservices.http.model.ResponseFormatOnRegisteringPostRequest;
 
 /**
@@ -32,58 +33,61 @@ public class BmrsOperationRequestsMocks {
 	
 	@Path("reserve/success")
 	@POST
-	public Response processPostRequestSuccessfully(BMRSAccountReservationRequest data) {
-		return Response.ok(new ResponseFormatOnRegisteringPostRequest("reservationCorellationId")).build();
+	public Response processPostRequestSuccessfully(FetchRequestBodyModel data) {
+		if(data.getOperType().equals("request"))
+			return Response.ok(new ResponseFormatOnRegisteringPostRequest("registerCorrelationIdSuccess")).build();
+		else if (data.getOperType().equals("response") && data.getCorrelationId().equals("registerCorrelationIdSuccess"))
+			return Response.ok(this.getBmrsAccountReservationResponseSample("0")).build();
+		else
+			return Response.ok(this.getBmrsAccountReservationResponseSample("API-505")).build();
 	}
 	
-	@Path("reserve/success/reservationCorellationId")
-	@GET
-	public Response processGetFetchRequestSuccess() {
-		return Response.ok(this.getBmrsAccountReservationResponseSample()).build();
-	}
-	
-	private BMRSAccountReservationResponse getBmrsAccountReservationResponseSample() {
-        return new BMRSAccountReservationResponse("CBPM",
+	private BMRSAccountReservationResponse getBmrsAccountReservationResponseSample(String errorCode) {
+		return new BMRSAccountReservationResponse("CBPM",
                 "1010",
                 "CA02",
                 "1234567890",
                 "UA853996220000000260012335661",
-                new Error());
+                new Error(errorCode, "error message"));
     }
 	
 	@Path("link-is-card/success")
 	@POST
-	public Response processLinkingPostRequestSuccessfully(BMRSLinkingISCardCardContractRequest data) {
-		return Response.ok(new ResponseFormatOnRegisteringPostRequest("linkingCorellationId")).build();
+	public Response processLinkingPostRequestSuccessfully(FetchRequestBodyModel data) {
+		if(data.getOperType().equals("request"))
+			return Response.ok(new ResponseFormatOnRegisteringPostRequest("linkingCorellationId")).build();
+		else if (data.getOperType().equals("response") && data.getCorrelationId().equals("linkingCorellationId"))
+			return Response.ok(this.getBmrsToIsCardAccLinkerResponseSample("0")).build();
+		else
+			return Response.ok(this.getBmrsToIsCardAccLinkerResponseSample("API-505")).build();
 	}
 	
-	@Path("link-is-card/success/linkingCorellationId")
-	@GET
-	public Response processLinkingGetFetchRequestSuccess() {
-		return Response.ok(this.getBmrsToIsCardAccLinkerResponseSample()).build();
-	}
-	
-	private BMRSLinkingISCardCardContractResponse getBmrsToIsCardAccLinkerResponseSample() {
+	private BMRSLinkingISCardCardContractResponse getBmrsToIsCardAccLinkerResponseSample(String errorCode) {
 		return new BMRSLinkingISCardCardContractResponse("CBPM",
 														 "1010",
 														 "1234567890",
 														 "0987654321",
-														 new Error());
+														 new Error(errorCode, "No message"));
 	}
 	
 	@Path("open/success")
 	@POST
-	public Response processOpeningPostRequestSuccessfully(BMRSAccountOpeningRequest data) {
-		return Response.ok(new ResponseFormatOnRegisteringPostRequest("openCorellationId")).build();
+	public Response processOpeningPostRequestSuccessfully(FetchRequestBodyModel data) {
+		if(data.getOperType().equals("request"))
+			return Response.ok(new ResponseFormatOnRegisteringPostRequest("openingCorellationId")).build();
+		else if (data.getOperType().equals("response") && data.getCorrelationId().equals("openingCorellationId"))
+			return Response.ok(this.getBmrsAccountOpenResponseSample("0")).build();
+		else
+			return Response.ok(this.getBmrsAccountOpenResponseSample("API-505")).build();
 	}
 	
-	@Path("open/success/openCorellationId")
-	@GET
-	public Response processOpeningGetFetchRequestSuccess() {
-		return Response.ok(this.getBmrsAccountOpenResponseSample()).build();
-	}
+//	@Path("open/success")
+//	@POST
+//	public Response processPostRequestSuccessfully(String data) {
+//		throw new IllegalArgumentException(data);
+//	}
 	
-	private BMRSAccountOpeningResponse getBmrsAccountOpenResponseSample() {
+	private BMRSAccountOpeningResponse getBmrsAccountOpenResponseSample(String errorCode) {
 		return new BMRSAccountOpeningResponse.Builder()
 							.systemCode("CBPM")
 							.processInstanceId("processInstanceTestId")
@@ -95,7 +99,7 @@ public class BmrsOperationRequestsMocks {
 							.bmrsAccountType("bmrsAccountTestType")
 							.bmrsAccountRole("bmrsAccountTestRole")
 							.accountOpenDate("19920907")
-							.error(new Error())
+							.error(new Error(errorCode, "No message"))
 							.build();
 	}
 	
