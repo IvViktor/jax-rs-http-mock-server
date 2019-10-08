@@ -103,6 +103,10 @@ public class ISCardRegisterClientRequestPE implements Serializable {
     @JsonbProperty("I_Reserved2")
     private String reserved2;
 
+    @JsonProperty("I_Enrolled")
+    @JsonbProperty("I_Enrolled")
+    private String enrolled;
+
     public ISCardRegisterClientRequestPE() {
     }
 
@@ -288,5 +292,13 @@ public class ISCardRegisterClientRequestPE implements Serializable {
 
     public void setReserved2(String reserved2) {
         this.reserved2 = reserved2;
+    }
+
+    public String getEnrolled() {
+        return enrolled;
+    }
+
+    public void setEnrolled(String enrolled) {
+        this.enrolled = enrolled;
     }
 }
