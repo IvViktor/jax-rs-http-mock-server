@@ -43,18 +43,25 @@ public class ISCardClientIDToCMDLinkerRequest implements Serializable {
     @JsonbProperty("clientType")
     private String clientType;
 
+    @NotNull(message = "The cmdId of source system cannot be null.")
+    @NotEmpty(message = "The cmdId of source system cannot be empty.")
+    @JsonProperty("cmdId")
+    @JsonbProperty("cmdId")
+    private String cmdId;
+
     public ISCardClientIDToCMDLinkerRequest() {
     }
 
-    public ISCardClientIDToCMDLinkerRequest(String procCode, String procId, String identClient, String systemId, String clientType) {
+    public ISCardClientIDToCMDLinkerRequest(String procCode, String procId, String identClient, String systemId, String clientType, String cmdId) {
         this.procCode = procCode;
         this.procId = procId;
         this.identClient = identClient;
         this.systemId = systemId;
         this.clientType = clientType;
+        this.cmdId = cmdId;
     }
 
-    public String getProcCode() {
+        public String getProcCode() {
         return procCode;
     }
 
@@ -92,5 +99,13 @@ public class ISCardClientIDToCMDLinkerRequest implements Serializable {
 
     public void setClientType(String clientType) {
         this.clientType = clientType;
+    }
+
+    public String getCmdId() {
+        return cmdId;
+    }
+
+    public void setCmdId(String cmdId) {
+        this.cmdId = cmdId;
     }
 }

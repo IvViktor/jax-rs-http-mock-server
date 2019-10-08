@@ -50,6 +50,6 @@ public class ISCardRegistrationRequestsMocks {
 	}
 
 	private ISCardClientIDToCMDLinkerResponse getISCardResponseSampleForAccIdToCMDLinking() {
-		return new ISCardClientIDToCMDLinkerResponse("isCardCMDProcCode", "isCardCMDprocId",new Error());
+		return new ISCardClientIDToCMDLinkerResponse("isCardCMDProcCode", "isCardCMDprocId", new Error("0", "no errors"));
 	}
 }
