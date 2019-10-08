@@ -13,6 +13,21 @@ import javax.validation.constraints.NotNull;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PrintingModuleRequest implements Serializable {
 
+    @JsonProperty("PI_CARD_ZAYAVA")
+    @JsonbProperty("PI_CARD_ZAYAVA")
+    @NotNull(message = "piCardZayava field in PrintingModuleRequest object connot be null.")
+    private String piCardZayava;
+
+    @JsonProperty("PE_CARD_ZAYAVA")
+    @JsonbProperty("PE_CARD_ZAYAVA")
+    @NotNull(message = "peCardZayava field in PrintingModuleRequest object connot be null.")
+    private String peCardZayava;
+
+    @JsonProperty("PE_CARD_DOVIDKA")
+    @JsonbProperty("PE_CARD_DOVIDKA")
+    @NotNull(message = "peCardDovidka field in PrintingModuleRequest object connot be null.")
+    private String peCardDovidka;
+
     @JsonProperty("ParamsFormat")
     @JsonbProperty("ParamsFormat")
     @NotNull(message = "ParamsFormat field in PrintingModuleRequest object connot be null.")
@@ -167,6 +182,30 @@ public class PrintingModuleRequest implements Serializable {
 	 */
 	public PrintingModuleRequest() {
 	}
+
+    public String getPiCardZayava() {
+        return piCardZayava;
+    }
+
+    public void setPiCardZayava(String piCardZayava) {
+        this.piCardZayava = piCardZayava;
+    }
+
+    public String getPeCardZayava() {
+        return peCardZayava;
+    }
+
+    public void setPeCardZayava(String peCardZayava) {
+        this.peCardZayava = peCardZayava;
+    }
+
+    public String getPeCardDovidka() {
+        return peCardDovidka;
+    }
+
+    public void setPeCardDovidka(String peCardDovidka) {
+        this.peCardDovidka = peCardDovidka;
+    }
 
     public String getParamsFormat() {
         return ParamsFormat;
