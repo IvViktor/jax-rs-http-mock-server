@@ -42,11 +42,11 @@ public class ISCardRegistrationRequestsMocks {
 	}
 	
 	private ISCardRegisterClientResponse getISCardResponseSamplePI() {
-		return new ISCardRegisterClientResponse("isCardContractId", "isCardAccId", "isCardClientPrivId", null, "icCardCardId", "1111222233334444", "", "");
+		return new ISCardRegisterClientResponse("isCardContractId", "isCardAccId", "isCardClientPrivId", null, "icCardCardId", "1111222233334444", "0", "Success");
 	}
 
 	private ISCardRegisterClientResponse getISCardResponseSamplePE() {
-		return new ISCardRegisterClientResponse("isCardContractId", "isCardAccId", null, "isCardClientCorpId", "icCardCardId", "1111222233334444", "", "");
+		return new ISCardRegisterClientResponse("isCardContractId", "isCardAccId", null, "isCardClientCorpId", "icCardCardId", "1111222233334444", "0", "Success");
 	}
 
 	private ISCardClientIDToCMDLinkerResponse getISCardResponseSampleForAccIdToCMDLinking() {
