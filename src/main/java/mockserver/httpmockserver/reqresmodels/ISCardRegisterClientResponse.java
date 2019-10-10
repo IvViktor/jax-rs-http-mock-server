@@ -32,8 +32,8 @@ public class ISCardRegisterClientResponse implements Serializable {
     @JsonbProperty("O_CardID")
     private String cardID;
 
-    @JsonProperty("o_cardnum")
-    @JsonbProperty("o_cardnum")
+    @JsonProperty("O_cardnum")
+    @JsonbProperty("O_cardnum")
     private String cardNumber;
 
     @JsonProperty("O_expdate")
