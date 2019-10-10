@@ -4,15 +4,14 @@
 package mockserver.httpmockserver;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import mockserver.httpmockserver.reqresmodels.PrintingModuleRequest;
 import mockserver.httpmockserver.reqresmodels.PrintingModuleResponse;
+import ua.aval.integration.microservices.http.model.FetchRequestBodyModel;
 import ua.aval.integration.microservices.http.model.ResponseFormatOnRegisteringPostRequest;
 
 /**
@@ -27,18 +26,18 @@ public class PrintingModuleRequestsMocks {
 	
 	@Path("print")
 	@POST
-	public Response processPostRequestSuccessfully(PrintingModuleRequest data) {
-		return Response.ok(new ResponseFormatOnRegisteringPostRequest("printingCorellationId")).build();
+	public Response processPostRequestSuccessfully(FetchRequestBodyModel data) {
+		if(data.getOperType().equals("request"))
+			return Response.ok(new ResponseFormatOnRegisteringPostRequest("printingCorellationId")).build();
+		else if (data.getOperType().equals("response") && data.getCorrelationId().equals("registerCorrelationIdSuccess"))
+			return Response.ok(this.getPrintingModuleResponseSample("0")).build();
+		else
+			return Response.ok(this.getPrintingModuleResponseSample("API-505")).build();
 	}
 	
-	@Path("print/printingCorellationId")
-	@GET
-	public Response processGetFetchRequestSuccess() {
-		return Response.ok(this.getPrintingModuleResponseSample()).build();
-	}
 	
-	private PrintingModuleResponse getPrintingModuleResponseSample() {
-		PrintingModuleResponse res = new PrintingModuleResponse();
+	private PrintingModuleResponse getPrintingModuleResponseSample(String errorCode) {
+		PrintingModuleResponse res = new PrintingModuleResponse(errorCode);
 		res.setUrl("http://taipan.test.kv.aval/tmpPDF.pdf");
 		return res;
 	}
