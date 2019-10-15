@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import mockserver.httpmockserver.reqresmodels.Error;
 import mockserver.httpmockserver.reqresmodels.PrintingModuleResponse;
 import ua.aval.integration.microservices.http.model.FetchRequestBodyModel;
 import ua.aval.integration.microservices.http.model.ResponseFormatOnRegisteringPostRequest;
@@ -37,7 +38,8 @@ public class PrintingModuleRequestsMocks {
 	
 	
 	private PrintingModuleResponse getPrintingModuleResponseSample(String errorCode) {
-		PrintingModuleResponse res = new PrintingModuleResponse(errorCode);
+		PrintingModuleResponse res = new PrintingModuleResponse();
+		res.setError(new Error(errorCode, null));
 		res.setUrl("http://taipan.test.kv.aval/tmpPDF.pdf");
 		return res;
 	}
